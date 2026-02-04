@@ -1,0 +1,308 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Comic Sans MS", "Segoe UI Emoji", cursive, sans-serif;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #ffd1ff 100%);
+  background-attachment: fixed;
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.center {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+button {
+  padding: 15px 30px;
+  margin: 10px;
+  border-radius: 30px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover:not(:disabled) {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.yes-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ff8787);
+  color: white;
+}
+
+.yes-btn:hover {
+  background: linear-gradient(135deg, #ff5252, #ff6b6b);
+}
+
+.no-btn {
+  background: linear-gradient(135deg, #a8a8a8, #c9c9c9);
+  color: #333;
+  transition: none;
+}
+
+/* Valentine Page Styles */
+.valentine-page {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.date-display {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.unlock-status {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.waiting-status {
+  background: linear-gradient(135deg, #ffa751 0%, #ff6b6b 100%);
+}
+
+.waiting-card {
+  text-align: center;
+}
+
+.waiting-card h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.waiting-card .message {
+  font-size: 1.2rem;
+  line-height: 1.9;
+}
+
+.waiting-card .message strong {
+  color: #ff6b6b;
+  font-size: 1.3rem;
+}
+
+.countdown-card {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 2rem;
+  display: inline-block;
+}
+
+.countdown-emoji {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.countdown-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.calendar-btn {
+  background: white;
+  color: #f5576c;
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+}
+
+.calendar-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: #fff5f7;
+}
+
+.calendar-btn:disabled {
+  background: #e0e0e0;
+  color: #888;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.message-card {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  padding: 3rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.message-card h1 {
+  color: #ff6b6b;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.day-date {
+  color: #999;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: normal;
+}
+
+.message {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 2rem;
+  font-family: "Georgia", serif;
+  font-style: italic;
+}
+
+.progress-indicator {
+  background: linear-gradient(135deg, #ff6b6b, #ff8787);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.navigation {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5568d3 0%, #663a8f 100%);
+}
+
+.nav-btn.locked {
+  background: linear-gradient(135deg, #a8a8a8, #c9c9c9);
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .message-card h1 {
+    font-size: 1.8rem;
+  }
+
+  .message {
+    font-size: 1.1rem;
+  }
+
+  button {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  .message-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .date-display {
+    font-size: 0.85rem;
+    padding: 10px 16px;
+  }
+
+  .unlock-status {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+
+  .waiting-card h1 {
+    font-size: 1.6rem;
+  }
+
+  .waiting-card .message {
+    font-size: 1rem;
+  }
+
+  .countdown-emoji {
+    font-size: 2.5rem;
+  }
+}
