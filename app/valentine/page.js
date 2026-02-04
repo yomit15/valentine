@@ -12,16 +12,17 @@ export default function ValentinePage() {
   const [isBeforeStart, setIsBeforeStart] = useState(false);
   const [gapiLoaded, setGapiLoaded] = useState(false);
   const [calendarAdded, setCalendarAdded] = useState(false);
+  const [showFinalLetter, setShowFinalLetter] = useState(false);
 
   const days = [
-    { title: "Rose Day 🌹", msg: "Like this rose, my love keeps blooming.", date: "Feb 7" },
-    { title: "Propose Day 💍", msg: "I'd choose you in every lifetime.", date: "Feb 8" },
-    { title: "Chocolate Day 🍫", msg: "Life with you is sweeter than chocolate.", date: "Feb 9" },
-    { title: "Teddy Day 🧸", msg: "If I could, I'd hug you forever.", date: "Feb 10" },
-    { title: "Promise Day 🤝", msg: "I promise to stand by you always.", date: "Feb 11" },
-    { title: "Hug Day 🤗", msg: "A virtual hug until I can give a real one.", date: "Feb 12" },
-    { title: "Kiss Day 😘", msg: "Saving all my kisses for you.", date: "Feb 13" },
-    { title: "Valentine's Day ❤️", msg: "Every day with you is my favorite day.", date: "Feb 14" }
+    { title: "Rose Day 🌹", msg: "If I could give you a rose for every time you crossed my mind, you’d be walking through a garden that never ends. 🌹Like this rose, my love for you keeps blooming — soft, beautiful, and endless.", date: "Feb 7" },
+    { title: "Propose Day 💍", msg: "In a world full of choices, my heart chooses you — today, tomorrow, and in every lifetime after that. 💍If loving you is a dream, I never want to wake up.", date: "Feb 8" },
+    { title: "Chocolate Day 🍫", msg: "They say chocolate makes life sweeter…but clearly they haven’t met you yet. 🍫Because every moment with you tastes like happiness I never knew I needed.", date: "Feb 9" },
+    { title: "Teddy Day 🧸", msg: "If I could, I’d turn into the softest teddy bear in the world… just so I could stay in your arms forever. 🧸Until then, imagine every hug from me wrapped inside this little message.", date: "Feb 10" },
+    { title: "Promise Day 🤝", msg: "I can’t promise a life without problems… but I promise you’ll never face them alone. 🤝My hand will always find yours, no matter what life brings.", date: "Feb 11" },
+    { title: "Hug Day 🤗", msg: "Close your eyes for a second… That warmth you feel? That’s my hug finding its way to you. 🤗If I were there right now, I’d never let go.", date: "Feb 12" },
+    { title: "Kiss Day 😘", msg: "If kisses could travel through screens, yours would be on your forehead right now — soft, gentle, full of love. 😘Saving the rest for when I see you.", date: "Feb 13" },
+    { title: "Valentine's Day ❤️", msg: "Loving you isn’t just my favorite feeling — it’s my favorite place to be. ❤️Every laugh, every moment, every heartbeat feels better because it’s with you.Today isn’t special because it’s Valentine’s Day… It’s special because I get to love you.", date: "Feb 14" }
   ];
 
   useEffect(() => {
@@ -147,6 +148,9 @@ export default function ValentinePage() {
   const nextDay = () => {
     if (dayIndex < unlockedDays && dayIndex < days.length - 1) {
       setDayIndex(dayIndex + 1);
+    } else if (dayIndex === 7 && unlockedDays >= 7) {
+      // After Valentine's Day (day 8), show the final letter
+      setShowFinalLetter(true);
     }
   };
 
@@ -163,67 +167,134 @@ export default function ValentinePage() {
         onLoad={() => setGapiLoaded(true)}
       />
       
-      <main className="center valentine-page">
-        <div className="date-display">
-          📅 {currentDate}
+      {showFinalLetter ? (
+        <div className="letter-wrapper">
+          <div className="letter">
+            <div className="letter-header">My Chahu,</div>
+            
+            <p>If you are reading this, it means you've reached the final page of our little Valentine story… but this isn't the end. It's the beginning of something I want forever.</p>
+            
+            <p>There was a time in my life when everything felt heavy.<br/>
+When I was tired of trying, tired of hoping, tired of believing that things could ever truly get better. I was moving forward, but without direction — existing, not living.</p>
+            
+            <p>And then… you walked into my life.<br/>
+Not with fireworks. Not with noise.<br/>
+But with a calm light that slowly made everything feel possible again.</p>
+            
+            <p>You didn't just make me smile —<br/>
+you reminded me why I should.</p>
+            
+            <p>The way you care, the way you listen, the way you simply are… it changed something inside me. Loving you didn't feel like falling. It felt like finally finding my way home.</p>
+            
+            <p>You came into my life at a time when I was ready to give up on so many things…<br/>
+and somehow, just by being you, you gave me a reason to try again.<br/>
+A reason to work harder.<br/>
+A reason to dream bigger.<br/>
+A reason to build a future that feels warm, safe, and full of laughter — with you in it.</p>
+            
+            <p>Every step I take toward becoming something better,<br/>
+every late night working,<br/>
+every plan for tomorrow…<br/>
+carries one quiet thought in my heart:<br/>
+<em>"I want to build a life where she never has to worry, only smile."</em></p>
+            
+            <p>You are not just someone I love.<br/>
+You are my peace on difficult days,<br/>
+my motivation when I feel lost,<br/>
+my happiness in its purest form.</p>
+            
+            <p>I cannot imagine my life without you in it.<br/>
+Not the small moments.<br/>
+Not the big dreams.<br/>
+Not the future I'm working so hard to create.</p>
+            
+            <p>If life is a long journey,<br/>
+I don't just want you beside me —<br/>
+I want to walk every road with your hand in mine.</p>
+            
+            <p>Thank you for coming into my life when I needed someone the most.<br/>
+Thank you for being my light when things felt dark.<br/>
+Thank you for being you.</p>
+            
+            <p>And if you ever wonder how much you mean to me…<br/>
+just know this —<br/>
+Loving you is the best decision my heart ever made.</p>
+            
+            <div className="letter-signature">
+              Forever yours,<br/>
+              Guddu ❤️
+            </div>
+            
+            <button onClick={() => setShowFinalLetter(false)} className="back-to-days-btn">
+              ← Back to Messages
+            </button>
+          </div>
         </div>
-        
-        {isBeforeStart ? (
-          <div className="message-card waiting-card">
-            <div className="unlock-status waiting-status">
+      ) : (
+        <main className="center valentine-page">
+          <div className="date-display">
+            📅 {currentDate}
+          </div>
+          
+          {isBeforeStart ? (
+            <div className="message-card waiting-card">
+              <div className="unlock-status waiting-status">
+                {dateInfo}
+              </div>
+              
+              <h1>Your Valentine Surprise Awaits! 💝</h1>
+              <p className="message">
+                Something beautiful has been written in the stars just for you, my princess… 🌙✨ But the most preci  ous moments are worth waiting for.
+                <br/><br/>
+                <strong>Chahu</strong>, come back on <strong>February 7th, 2026</strong> to unlock the first piece of my heart waiting here for you. 💌 From <strong>Feb 7th to 14th</strong>, a new little love note will bloom each day — made only for you. 🌹 
+                <br/><br/>
+                On <strong>February 7th, 2026</strong>, and the first page of our Valentine story will open. 📖 Each day after that, a new chapter of love will appear until <strong>February 14th</strong>. 🌷✨
+              </p>
+              
+              <div className="countdown-card">
+                <div className="countdown-emoji">⏰</div>
+                <button 
+                  onClick={handleAddToCalendar} 
+                  className="calendar-btn"
+                  disabled={calendarAdded}
+                >
+                  {calendarAdded ? '✓ Added to Calendar!' : '📅 Mark your calendar!'}
+                </button>
+              </div>
+            </div>
+          ) : (
+          <div className="message-card">
+            <div className="unlock-status">
               {dateInfo}
             </div>
             
-            <h1>Your Valentine Surprise Awaits! 💝</h1>
-            <p className="message">
-              Something special is waiting for you, but good things come to those who wait...
-              <br/><br/>
-              Come back on <strong>February 7th, 2026</strong> to unlock your first message! 
-              <br/><br/>
-              Each day from Feb 7-14, a new romantic message will be revealed just for you. ✨
-            </p>
+            <h1>{days[dayIndex].title}</h1>
+            <div className="day-date">{days[dayIndex].date}, 2026</div>
+            <p className="message">{days[dayIndex].msg}</p>
             
-            <div className="countdown-card">
-              <div className="countdown-emoji">⏰</div>
-              <button 
-                onClick={handleAddToCalendar} 
-                className="calendar-btn"
-                disabled={calendarAdded}
-              >
-                {calendarAdded ? '✓ Added to Calendar!' : '📅 Mark your calendar!'}
-              </button>
+            <div className="progress-indicator">
+              Day {dayIndex + 1} of {days.length}
+            </div>
+
+            <div className="navigation">
+              {dayIndex > 0 && (
+                <button onClick={prevDay} className="nav-btn">← Previous 💕</button>
+              )}
+              
+              {dayIndex < unlockedDays && dayIndex < days.length - 1 ? (
+                <button onClick={nextDay} className="nav-btn">Next 💖 →</button>
+              ) : dayIndex === 7 && unlockedDays >= 7 ? (
+                <button onClick={nextDay} className="nav-btn final-letter-btn">Open Final Letter 💌</button>
+              ) : dayIndex === days.length - 1 ? (
+                <button disabled className="nav-btn locked">All Messages Read ❤️</button>
+              ) : (
+                <button disabled className="nav-btn locked">Come back tomorrow 💌</button>
+              )}
             </div>
           </div>
-        ) : (
-        <div className="message-card">
-          <div className="unlock-status">
-            {dateInfo}
-          </div>
-          
-          <h1>{days[dayIndex].title}</h1>
-          <div className="day-date">{days[dayIndex].date}, 2026</div>
-          <p className="message">{days[dayIndex].msg}</p>
-          
-          <div className="progress-indicator">
-            Day {dayIndex + 1} of {days.length}
-          </div>
-
-          <div className="navigation">
-            {dayIndex > 0 && (
-              <button onClick={prevDay} className="nav-btn">← Previous 💕</button>
-            )}
-            
-            {dayIndex < unlockedDays && dayIndex < days.length - 1 ? (
-              <button onClick={nextDay} className="nav-btn">Next 💖 →</button>
-            ) : dayIndex === days.length - 1 ? (
-              <button disabled className="nav-btn locked">All Messages Read ❤️</button>
-            ) : (
-              <button disabled className="nav-btn locked">Come back tomorrow 💌</button>
-            )}
-          </div>
-        </div>
+        )}
+      </main>
       )}
-    </main>
     </>
   );
 }
