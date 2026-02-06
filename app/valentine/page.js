@@ -31,7 +31,8 @@ export default function ValentinePage() {
       return;
     }
 
-    const startDate = new Date("2026-02-07");
+    // Set start date to midnight LOCAL time (not UTC)
+    const startDate = new Date(2026, 1, 7); // Month is 0-indexed: 1 = February
     const today = new Date();
     
     // Display current device date and time
